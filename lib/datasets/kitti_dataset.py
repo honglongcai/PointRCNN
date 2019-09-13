@@ -16,7 +16,6 @@ class KittiDataset(torch_data.Dataset):
         self.image_idx_list = [x.strip() for x in open(split_dir).readlines()]
         self.num_sample = self.image_idx_list.__len__()
         
-        print(self.imageset_dir)
         self.image_dir = os.path.join(self.imageset_dir, 'image_2')
         self.lidar_dir = os.path.join(self.imageset_dir, 'velodyne')
         self.calib_dir = os.path.join(self.imageset_dir, 'calib')
@@ -40,7 +39,6 @@ class KittiDataset(torch_data.Dataset):
 
     def get_lidar(self, idx):
         lidar_file = os.path.join(self.lidar_dir, '%06d.bin' % idx)
-        print(lidar_file)
         assert os.path.exists(lidar_file)
         return np.fromfile(lidar_file, dtype=np.float32).reshape(-1, 4)
 
