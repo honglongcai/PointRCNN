@@ -15,7 +15,8 @@ class KittiDataset(torch_data.Dataset):
         split_dir = os.path.join(root_dir, 'KITTI', 'ImageSets', split + '.txt')
         self.image_idx_list = [x.strip() for x in open(split_dir).readlines()]
         self.num_sample = self.image_idx_list.__len__()
-
+        
+        print(self.imageset_dir)
         self.image_dir = os.path.join(self.imageset_dir, 'image_2')
         self.lidar_dir = os.path.join(self.imageset_dir, 'velodyne')
         self.calib_dir = os.path.join(self.imageset_dir, 'calib')
